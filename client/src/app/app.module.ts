@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 
 import { BannerService } from './services/banner.service';
 import { BannerDataComponent } from './components/banner-data/banner-data.component';
+import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BannerDataComponent
+    BannerDataComponent,
+    FileUploaderComponent
   ],
   imports: [
     BrowserModule,
