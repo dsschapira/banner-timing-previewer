@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BannerService } from '../../services/banner.service';
 
 @Component({
   selector: 'app-banner-data',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BannerDataComponent implements OnInit {
 
-  constructor() { }
+  banner: any;
+
+  constructor( private bannerService: BannerService) { }
 
   ngOnInit() {
+    this.showBanners();
+  }
+
+  showBanners(): void {
+    this.bannerService.getBanners()
+      .subscribe(banner => this.banner = JSON.parse(banner['data'])['test']);
   }
 
 }

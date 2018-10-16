@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 
@@ -13,7 +14,8 @@ import { BannerDataComponent } from './components/banner-data/banner-data.compon
     BannerDataComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [ BannerService ],
   bootstrap: [AppComponent]
