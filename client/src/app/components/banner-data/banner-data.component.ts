@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BannerService } from '../../services/banner.service';
+import { BannerService } from '../../services/banner/banner.service';
 
 @Component({
   selector: 'app-banner-data',

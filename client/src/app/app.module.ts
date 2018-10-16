@@ -4,7 +4,9 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 
-import { BannerService } from './services/banner.service';
+import { BannerService } from './services/banner/banner.service';
+import { FileUploaderService } from './services/file-uploader/file-uploader.service';
+
 import { BannerDataComponent } from './components/banner-data/banner-data.component';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 
@@ -19,7 +21,10 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
     BrowserModule,
     HttpClientModule
   ],
-  providers: [ BannerService ],
+  providers: [ 
+    BannerService,
+    FileUploaderService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
