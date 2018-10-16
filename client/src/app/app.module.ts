@@ -1,20 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
-import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
+
+import { BannerService } from './services/banner.service';
+import { BannerDataComponent } from './components/banner-data/banner-data.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FileUploaderComponent
+    BannerDataComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ BannerService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
