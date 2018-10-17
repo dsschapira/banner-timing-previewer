@@ -19,7 +19,8 @@ export class FileUploaderComponent implements OnInit {
   }
 
   onUpload(){
-    this.fileUploader.uploadFiles(this.selectedFiles);
+    this.fileUploader.uploadFiles(this.selectedFiles)
+      .subscribe(res => { console.log(res); });
   }
 
 }

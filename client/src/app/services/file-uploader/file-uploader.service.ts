@@ -9,10 +9,8 @@ export class FileUploaderService {
     ) { }
 
   uploadFiles(fileList){
-    const fd = new FormData();
-    console.log('got to the service');
     console.log(fileList);
-    //this.http.post('http://localhost:8080/banner-timing-previewer/server/api/upload_files.php');
+    return this.http.post('http://localhost:8080/banner-timing-previewer/server/api/post_banner.php', fileList);
   }
 
 }
