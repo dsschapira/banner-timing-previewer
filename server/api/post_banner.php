@@ -6,8 +6,7 @@
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Acess-Control-Allow-Origin, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
     include_once '../config/Database.php';
-    include_once '../models/Banner.php';
-    include_once '../models/BannerObject.php';
+    include_once '../models/Banner.php';\
 
     // Instantiate DB & connect
     $database = new Database();
@@ -16,29 +15,19 @@
     // Instantiate Banner obj
     $banner = new Banner($db);
 
-    // Get raw posted data
-    $data = json_decode(file_get_contents("php://input"));
+    /* TODOS:
+    *   1. Get the files that were posted.
+    *   2. Store the files in the server's uploads folder.
+    *   3. Get the route to the new directory in the uploads folder.
+    *   4. Set that route to $banner->route 
+    *   5. Save banner info to DB.
+    */
 
     $success = $banner->createBanner();
     if($success) {
         echo json_encode(
             array('message' => 'Banner Created With ID '. $banner->id .'.')
         );
-        foreach ($data as $banner_file){
-            $banner_object = new BannerObject($db);
-            $banner_object->banner_id = $banner->id;
-            $banner_object->file = $banner_file;
-
-            if($banner_object->createBannerObject()) {
-                echo json_encode(
-                    array('message' => 'Banner Obj Created.')
-                );
-            } else {
-                echo json_encode(
-                    array('message' => 'Banner Obj Not Created.')
-                );
-            }
-        }
     } else {
         echo json_encode(
             array('message' => 'Banner Not Created.')

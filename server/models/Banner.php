@@ -7,7 +7,7 @@
 
         // Banner Properties
         public $id;
-        public $data;
+        public $route;
 
         // Constructor with DB
         public function __construct($db){
@@ -40,20 +40,21 @@
             $query = 'INSERT INTO ' .
                 $this->table . ' 
                 SET
-                    data = "hello world"';
+                    route = "http://localhost:8080/banner-timing-previewer/server/uploads"';
             
             // Prepare statement
             $stmt = $this->conn->prepare($query);
 
             //Execute query
             if($stmt->execute()) {
-                $id_query = 'SELECT LAST_INSERT_ID()';
-                $id_stmt = $this->conn->prepare($id_query);
-                $id_stmt->execute();
+                $recent_query = 'SELECT LAST_INSERT_ID()';
+                $recent_stmt = $this->conn->prepare($recent_query);
+                $recent_stmt->execute();
 
-                $row = $id_stmt->fetch(PDO::FETCH_ASSOC);
+                $row = $recent_stmt->fetch(PDO::FETCH_ASSOC);
                 $keys = array_keys($row);
-                $this->id = $row[$keys[0]]; //Gets the ID of the banner row we just created
+                $this->id = $row[$keys[0]]; // Gets the ID of the banner row we just created
+                $this->route = $row[$keys[1]]; // Get route of the banner we just created
 
                 return true;
             }
