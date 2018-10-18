@@ -8,14 +8,16 @@ import { FileUploaderService } from '../../services/file-uploader/file-uploader.
 })
 export class FileUploaderComponent implements OnInit {
 
-  selectedFiles: FileList = null;
+  selectedFiles: Array<File> = [];
 
   constructor( private fileUploader: FileUploaderService) { }
 
   ngOnInit(){}
 
   onFileSelected(event){
-    this.selectedFiles = event.target.files;
+    for(let i=0; i < event.target.files.length; i++){
+      this.selectedFiles.push(event.target.files.item(i));
+    }
   }
 
   onUpload(){
