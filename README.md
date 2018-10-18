@@ -3,10 +3,8 @@
 ## Setup Instructions
 ### Back-end
 1. Create or setup a database to use.  I was using xampp's MySQL.  Update the database config in server/config/Database.php with your database information.
-2. Create a 'banners' and 'banner_objects' table in your database.  Alternatively create any 2 tables, but update the models in server/models/Banner.php and server/models/BannerObject.php to reflect your table names.
-    * The Banner table should only have an ID field set to autoincrement.
-        * Current implementation also has a data column that's just been used for testing thus far.  This should be removed before this is ready for production.
-    * The BannerObjects table should have an ID field, a banner_id field, and a file field.
+2. Create a 'banners' table in your database.  Alternatively name the table anything, but update the model in server/models/Banner.php to reflect your table names.
+    * The Banner table should have an ID field set to autoincrement and a route column.
 
 ### Front-end
 1. In client/src/app/services verify that both the banner and file-uploader services are using the correct localhost port for your setup.  Mine is configured for port 8080.
