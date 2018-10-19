@@ -1,12 +1,12 @@
 <?php
     // Headers
     header('Access-Control-Allow-Origin: *');
-    header('Content-Type: application/json');
+    header('Content-Type: multipart/form-data');
     header('Access-Control-Allow-Methods: POST');
-    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, boundary, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
     include_once '../config/Database.php';
-    include_once '../models/Banner.php';\
+    include_once '../models/Banner.php';
 
     // Instantiate DB & connect
     $database = new Database();
@@ -23,7 +23,7 @@
     *   5. Save banner info to DB.
     */
 
-    $success = $banner->createBanner();
+    $success = true;//$banner->createBanner();
     if($success) {
         echo json_encode(
             array('message' => 'Banner Created With ID '. $banner->id .'.')
