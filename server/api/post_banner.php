@@ -15,16 +15,14 @@
     // Instantiate Banner obj
     $banner = new Banner($db);
 
-    /* TODOS:
-    *   1. Get the files that were posted.
-    *   2. Store the files in the server's uploads folder.
-    *   3. Get the route to the new directory in the uploads folder.
-    *   4. Set that route to $banner->route 
-    *   5. Save banner info to DB.
-    */
-
     $success = $banner->createBanner();
     if($success) {
+        // We now have access to the route to use from the createBanner method
+        mkdir("../uploads/".$banner->id);
+        $path = "../uploads/".$banner->id."/";
+        foreach($_FILES as $file){
+            move_uploaded_file($file['tmp_name'], $path.$file['name']);
+        }
         echo json_encode(
             array('message' => 'Banner Created With ID '. $banner->id .'.')
         );
