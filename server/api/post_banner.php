@@ -24,10 +24,10 @@
             move_uploaded_file($file['tmp_name'], $path.$file['name']);
         }
         echo json_encode(
-            array('message' => 'Banner Created With ID '. $banner->id .'.')
+            array('id' => $banner->id, 'path' => $banner->route, 'message' => 'Banner Created.' )
         );
     } else {
         echo json_encode(
-            array('message' => 'Banner Not Created.')
+            array( 'id' => false, 'path' => null, 'message' => 'An error occured creating the banner.')
         );
     }

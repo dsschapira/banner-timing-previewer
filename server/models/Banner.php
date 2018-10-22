@@ -43,7 +43,7 @@
 
             $row = $recent_stmt->fetch(PDO::FETCH_ASSOC);
             $keys = array_keys($row);
-            $this->id = $row[$keys[0]] + 1; // Gets the ID of the banner row we just created and increment by 1
+            $this->id = $row[$keys[0]] + 1; // Gets the ID of the last banner row and increment by 1
             $this->route = "http://localhost:8080/banner-timing-previewer/server/uploads/" . $this->id . "/";
 
             // Create query
