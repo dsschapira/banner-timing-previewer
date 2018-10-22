@@ -36,26 +36,27 @@
         }
 
         public function createBanner() {
+            // Get the ID we'll use
+            $recent_query = 'SELECT * FROM ' . $this->table . ' ORDER BY id DESC LIMIT 1';
+            $recent_stmt = $this->conn->prepare($recent_query);
+            $recent_stmt->execute();
+
+            $row = $recent_stmt->fetch(PDO::FETCH_ASSOC);
+            $keys = array_keys($row);
+            $this->id = $row[$keys[0]] + 1; // Gets the ID of the banner row we just created and increment by 1
+            $this->route = "http://localhost:8080/banner-timing-previewer/server/uploads/" . $this->id . "/";
+
             // Create query
             $query = 'INSERT INTO ' .
                 $this->table . ' 
                 SET
-                    route = "http://localhost:8080/banner-timing-previewer/server/uploads"';
+                    route = "' . $this->route . '"';
             
             // Prepare statement
             $stmt = $this->conn->prepare($query);
 
             //Execute query
             if($stmt->execute()) {
-                $recent_query = 'SELECT LAST_INSERT_ID()';
-                $recent_stmt = $this->conn->prepare($recent_query);
-                $recent_stmt->execute();
-
-                $row = $recent_stmt->fetch(PDO::FETCH_ASSOC);
-                $keys = array_keys($row);
-                $this->id = $row[$keys[0]]; // Gets the ID of the banner row we just created
-                $this->route = $row[$keys[1]]; // Get route of the banner we just created
-
                 return true;
             }
 

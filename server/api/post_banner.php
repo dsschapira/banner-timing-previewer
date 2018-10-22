@@ -23,7 +23,7 @@
     *   5. Save banner info to DB.
     */
 
-    $success = true;//$banner->createBanner();
+    $success = $banner->createBanner();
     if($success) {
         echo json_encode(
             array('message' => 'Banner Created With ID '. $banner->id .'.')
