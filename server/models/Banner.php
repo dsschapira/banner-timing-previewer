@@ -32,7 +32,7 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             // Set properties
-            $this->data = $row['data'];
+            $this->route = $row['route']; // route is in the second column
         }
 
         public function createBanner() {

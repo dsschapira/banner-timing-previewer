@@ -21,7 +21,8 @@
 
     // Create Array
     $banner_arr = array(
-        'data'  => $banner->data
+        'id' => $banner->id,
+        'route' => $banner->route
     );
 
     // Make JSON
