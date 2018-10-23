@@ -59,12 +59,11 @@ export class FileUploaderComponent implements OnInit {
       this.bannerHeight = +adBannerSize.slice(adBannerSize.indexOf("=", adBannerSize.indexOf("height"))+1, adBannerSize.indexOf(','));
     }
 
-    this.bannerCode = htmlString;
-    this.updateHTMLSources();
+    this.updateHTMLSources(htmlString);
 
   }
 
-  updateHTMLSources(){
+  updateHTMLSources(htmlString){
     // Need to update the style hrefs, the script src, and the image src attributes
   }
 
