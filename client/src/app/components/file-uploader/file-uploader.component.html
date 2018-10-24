@@ -2,5 +2,5 @@
   <input type="file" (change)="onFileSelected($event)" multiple/>
   <button type="button" (click)="onUpload()">Upload</button>
   <br />
-  <iframe style="margin-top:50px;" width="{{bannerWidth}}" height="{{bannerHeight}}" srcdoc="{{bannerCode}}"></iframe>
+  <iframe style="margin-top:50px;" width="{{bannerWidth}}" height="{{bannerHeight}}" [srcdoc]="bannerCode"></iframe>
 </div>
