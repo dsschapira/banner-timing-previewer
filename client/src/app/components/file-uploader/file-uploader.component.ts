@@ -89,15 +89,15 @@ export class FileUploaderComponent implements OnInit {
           });
         }
         // Replace images
-        else if(tag.indexOf('.png') >= 0 || tag.indexOf('.img') >= 0) {
+        else if(tag.indexOf('.png') >= 0 || tag.indexOf('.jpg') >= 0) {
           const imgStart = tag.indexOf('src="')+'src="'.length;
-          const imgEnd = (tag.indexOf('.png"')+'.png"'.length - 1) >= 0 ? 
+          const imgEnd =  tag.indexOf('.png"') >= 0 ? 
                           tag.indexOf('.png"')+'.png"'.length - 1 :
                           tag.indexOf('.jpg"')+'.jpg"'.length - 1;
           const imgFileName = tag.slice(imgStart, imgEnd);
 
           this.selectedFiles.forEach(file => {
-            if((file.type == "image/png" || file.type == "image/jpg") && file.name == imgFileName){
+            if((file.type == "image/png" || file.type == "image/jpeg") && file.name == imgFileName){
               tag = tag.replace(imgFileName, URL.createObjectURL(file));
               this.htmlStringArr[index] = tag;
             }
