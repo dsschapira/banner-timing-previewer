@@ -1,5 +1,20 @@
 # Banner Timing Previewer
 
+## Requirements
+1. The Javascript used for animating the banner must be contained in an object variable.  For example:
+```
+var creative = {
+    timing: {
+        fadeIn: ...,
+        fadeOut: ...,
+        etc...
+    },
+    initialize: function(){...},
+    animate: function(){...},
+    etc..
+};
+```
+
 ## Setup Instructions
 ### Back-end
 1. Create or setup a database to use.  I was using xampp's MySQL.  Update the database config in server/config/Database.php with your database information.
