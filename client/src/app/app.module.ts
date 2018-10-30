@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
@@ -10,6 +11,9 @@ import { FileUploaderService } from './services/file-uploader/file-uploader.serv
 import { BannerDataComponent } from './components/banner-data/banner-data.component';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 
+const appRoutes: Routes = [
+  { path: '', component: FileUploaderComponent, pathMatch: 'full' }
+];
 
 @NgModule({
   declarations: [
@@ -18,6 +22,10 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
     FileUploaderComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: false }
+    ),
     BrowserModule,
     HttpClientModule
   ],
