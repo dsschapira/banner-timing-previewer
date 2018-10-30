@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { BannerService } from './services/banner/banner.service';
 import { FileUploaderService } from './services/file-uploader/file-uploader.service';
 
-import { BannerDataComponent } from './components/banner-data/banner-data.component';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 
 const appRoutes: Routes = [
@@ -18,7 +17,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    BannerDataComponent,
     FileUploaderComponent
   ],
   imports: [
